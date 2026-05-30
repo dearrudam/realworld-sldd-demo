@@ -1,23 +1,55 @@
 # ![RealWorld Example App](logo.png)
 
-> ### [YOUR_FRAMEWORK] codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
+Quarkus + SLDD backend workspace for the [RealWorld](https://github.com/gothinkster/realworld) API.
 
+This repository currently contains the initial scaffold for two independent Quarkus Maven applications. RealWorld API behavior is intentionally deferred to later SLDD workflows.
 
-### [Demo](https://demo.realworld.build/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
+## Projects
 
+- `realworld-api`: Quarkus REST JSON-B backend scaffold for the future RealWorld API implementation.
+- `realworld-api-st`: standalone Quarkus REST Client scaffold for future black-box system tests against `realworld-api`.
 
-This codebase was created to demonstrate a fully fledged fullstack application built with **[YOUR_FRAMEWORK]** including CRUD operations, authentication, routing, pagination, and more.
+## SLDD Workflow
 
-We've gone to great lengths to adhere to the **[YOUR_FRAMEWORK]** community styleguides & best practices.
+Specification-driven work is tracked under `.sldd/specs/realworld-quarkus-apps/`.
 
-For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
+Current scaffold verification lives at `.sldd/specs/realworld-quarkus-apps/verify-scaffold.sh` and checks the generated projects, guidance files, dependencies, documentation, and ignore rules.
 
+## Getting Started
 
-# How it works
+Run scaffold verification from the repository root:
 
-> Describe the general architecture of your app here
+```bash
+bash .sldd/specs/realworld-quarkus-apps/verify-scaffold.sh
+```
 
-# Getting started
+Build the API project:
 
-> npm install, npm start, etc.
+```bash
+cd realworld-api
+mvn test
+```
 
+Build the standalone system-test project:
+
+```bash
+cd realworld-api-st
+mvn test
+```
+
+Run either Quarkus app in dev mode from its own directory:
+
+```bash
+mvn quarkus:dev
+```
+
+## Quarkus Guides
+
+- [Writing REST Services with Quarkus REST](https://quarkus.io/guides/rest)
+- [Writing JSON REST Services](https://quarkus.io/guides/rest-json)
+- [Using the REST Client](https://quarkus.io/guides/rest-client)
+- [Quarkus JNoSQL](https://docs.quarkiverse.io/quarkus-jnosql/dev/)
+
+## Current Scope
+
+This scaffold does not yet implement authentication, users, profiles, articles, comments, favorites, feeds, or pagination. Those behaviors require later approved SLDD steps.

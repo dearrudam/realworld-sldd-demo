@@ -2,7 +2,7 @@
   "schema_version": 1,
   "feature": "realworld-quarkus-apps",
   "workflow": "sldd",
-  "current_step": "04",
+  "current_step": "06",
   "steps": {
     "01": {
       "status": "complete",
@@ -25,15 +25,20 @@
       "updated_at": "2026-05-30T06:38:06Z"
     },
     "04": {
-      "status": "pending",
-      "evidence": null
+      "status": "complete",
+      "artifact": "verify-scaffold.sh",
+      "evidence": "red_confirmed",
+      "updated_at": "2026-05-30T06:45:17Z"
     },
     "05": {
-      "status": "pending",
-      "evidence": null
+      "status": "complete",
+      "evidence": "green_confirmed",
+      "updated_at": "2026-05-30T06:50:32Z"
     },
     "06": {
-      "status": "pending"
+      "status": "complete",
+      "artifact": "06-verification-and-feedback-report.md",
+      "updated_at": "2026-05-30T06:54:17Z"
     }
   }
 }

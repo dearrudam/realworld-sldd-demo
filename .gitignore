@@ -31,3 +31,11 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Java / Maven / Quarkus
+target/
+.mvn/wrapper/maven-wrapper.jar
+.quarkus/
+*.log
+hs_err_pid*
+replay_pid*
