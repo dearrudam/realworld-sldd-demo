@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "feature": "realworld-quarkus-apps",
+  "workflow": "sldd",
+  "current_step": "04",
+  "steps": {
+    "01": {
+      "status": "complete",
+      "artifact": "01-product-intent-specification.md",
+      "updated_at": "2026-05-30T05:54:15Z"
+    },
+    "99": {
+      "status": "complete",
+      "artifact": "existing-codebase-understanding.md",
+      "updated_at": "2026-05-30T05:58:24Z"
+    },
+    "02": {
+      "status": "complete",
+      "artifact": "02-high-level-technical-design.md",
+      "updated_at": "2026-05-30T06:33:54Z"
+    },
+    "03": {
+      "status": "complete",
+      "artifact": "03-low-level-design-and-version-policy.md",
+      "updated_at": "2026-05-30T06:38:06Z"
+    },
+    "04": {
+      "status": "pending",
+      "evidence": null
+    },
+    "05": {
+      "status": "pending",
+      "evidence": null
+    },
+    "06": {
+      "status": "pending"
+    }
+  }
+}
