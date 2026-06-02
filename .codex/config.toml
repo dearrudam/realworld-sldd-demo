@@ -1,0 +1,3 @@
+[mcp_servers.quarkus-agent-local]
+command = "jbang"
+args = ["quarkus-agent-mcp@quarkusio"]
