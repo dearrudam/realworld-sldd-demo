@@ -1,23 +1,37 @@
-# ![RealWorld Example App](logo.png)
+# RealWorld Quarkus SLDD Demo
 
-> ### [YOUR_FRAMEWORK] codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
+This repository is a Quarkus backend workspace for the [RealWorld](https://github.com/gothinkster/realworld) API, developed through an SLDD (spec-loop driven development) workflow.
 
+The current scope is application scaffolding. Full RealWorld behavior such as authentication, users, profiles, articles, comments, favorites, feeds, and pagination is intentionally deferred to later SLDD workflows.
 
-### [Demo](https://demo.realworld.build/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
+## Workspace applications
 
+- [`realworld-api`](realworld-api/) — Quarkus application that will own the RealWorld REST API implementation.
+- [`realworld-api-st`](realworld-api-st/) — standalone Quarkus application for black-box system tests that validate `realworld-api` over HTTP.
 
-This codebase was created to demonstrate a fully fledged fullstack application built with **[YOUR_FRAMEWORK]** including CRUD operations, authentication, routing, pagination, and more.
+SLDD artifacts live under [`.sldd/specs/realworld-quarkus-apps/`](.sldd/specs/realworld-quarkus-apps/) and record the approved intent, codebase context, design, test, implementation, and verification decisions for this scaffold.
 
-We've gone to great lengths to adhere to the **[YOUR_FRAMEWORK]** community styleguides & best practices.
+## Build and test
 
-For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
+Run checks from each independent Maven project:
 
+```bash
+./scripts/verify-realworld-scaffold.py
+cd realworld-api && ./mvnw test
+cd ../realworld-api-st && ./mvnw test
+```
 
-# How it works
+Run the API in dev mode:
 
-> Describe the general architecture of your app here
+```bash
+cd realworld-api
+./mvnw quarkus:dev
+```
 
-# Getting started
+Run future standalone system tests from `realworld-api-st` after starting `realworld-api` and after a later SLDD workflow adds concrete HTTP scenarios.
 
-> npm install, npm start, etc.
+## Development rules
 
+- Keep `realworld-api-st` decoupled from API internals; it must validate through HTTP only.
+- Use SLDD before adding RealWorld endpoint behavior.
+- Keep README and guidance files current when scaffold or workflow structure changes.
