@@ -1,23 +1,52 @@
-# ![RealWorld Example App](logo.png)
+# RealWorld Quarkus SLDD Backend
 
-> ### [YOUR_FRAMEWORK] codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
+This repository is a spec-led implementation workspace for the [RealWorld](https://github.com/gothinkster/realworld) backend API. It uses Quarkus and follows the local SLDD workflow to move changes through product intent, design, tests, implementation, and verification.
 
+## Applications
 
-### [Demo](https://demo.realworld.build/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
+- [`realworld-api`](realworld-api/) contains the Quarkus REST API application that will implement RealWorld-compatible backend behavior.
+- [`realworld-api-st`](realworld-api-st/) contains a standalone Quarkus system-test application that validates `realworld-api` externally over HTTP.
 
+The initial scaffold does not implement RealWorld endpoints yet. Authentication, users, profiles, articles, comments, favorites, feeds, tags, and pagination behavior will be added through later SLDD-scoped changes.
 
-This codebase was created to demonstrate a fully fledged fullstack application built with **[YOUR_FRAMEWORK]** including CRUD operations, authentication, routing, pagination, and more.
+## Development workflow
 
-We've gone to great lengths to adhere to the **[YOUR_FRAMEWORK]** community styleguides & best practices.
+SLDD artifacts live under `.sldd/specs/`. Start or resume feature work through the SLDD workflow before changing product behavior, API contracts, persistence models, or system-test coverage.
 
-For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
+## Common commands
 
+Run scaffold verification from the repository root:
 
-# How it works
+```bash
+python3 scripts/verify-realworld-scaffold.py
+```
 
-> Describe the general architecture of your app here
+Build and test the API application:
 
-# Getting started
+```bash
+cd realworld-api
+./mvnw test
+```
 
-> npm install, npm start, etc.
+Build and test the standalone system-test application:
 
+```bash
+cd realworld-api-st
+./mvnw test
+```
+
+Run the API in development mode:
+
+```bash
+cd realworld-api
+./mvnw quarkus:dev
+```
+
+Run the system-test application in development mode:
+
+```bash
+cd realworld-api-st
+./mvnw quarkus:dev
+```
+
+`realworld-api-st` uses the `service_uri` REST client configuration key to target the API over HTTP. The scaffold default points to `http://localhost:8080`.
