@@ -4,18 +4,47 @@
   "workflow": "sldd",
   "kind": "feature",
   "title": "BCE Architecture Baseline",
-  "current_step": "01",
+  "current_step": "complete",
   "steps": {
     "01": {
-      "status": "pending",
+      "status": "complete",
       "artifact": "01-product-intent-specification.md",
       "origin": {
         "type": "workflow-set-scaffold",
         "journal": "../realworld-capability-decomposition/_spec-journal.json",
         "artifact": "../realworld-capability-decomposition/01-workflow-set-plan.md"
       },
-      "reason": "Step 01 draft requires explicit approval before completion.",
-      "updated_at": "2026-06-04T16:54:41Z"
+      "updated_at": "2026-06-04T19:17:41Z"
+    },
+    "99": {
+      "status": "complete",
+      "artifact": "existing-codebase-understanding.md",
+      "updated_at": "2026-06-04T19:22:44Z"
+    },
+    "02": {
+      "status": "complete",
+      "artifact": "02-high-level-technical-design.md",
+      "updated_at": "2026-06-04T19:22:44Z"
+    },
+    "03": {
+      "status": "complete",
+      "artifact": "03-low-level-design-and-version-policy.md",
+      "updated_at": "2026-06-04T19:22:44Z"
+    },
+    "04": {
+      "status": "complete",
+      "evidence": "red_confirmed",
+      "updated_at": "2026-06-04T19:31:37Z"
+    },
+    "05": {
+      "status": "complete",
+      "evidence": "green_confirmed",
+      "updated_at": "2026-06-04T19:32:16Z"
+    },
+    "06": {
+      "status": "complete",
+      "artifact": "06-verification-and-feedback-report.md",
+      "updated_at": "2026-06-04T19:34:28Z"
     }
   },
   "relationships": {
@@ -27,6 +56,10 @@
     ]
   },
   "notes": [
-    "Step 01 draft scaffolded from workflow-set realworld-capability-decomposition on 2026-06-04."
+    "Step 01 draft scaffolded from workflow-set realworld-capability-decomposition on 2026-06-04.",
+    "User clarified approval of the required gated steps through Step 03 on 2026-06-04T19:22:44Z; Step 99, Step 02, and Step 03 artifacts were saved and marked complete.",
+    "Step 04 Red confirmed on 2026-06-04T19:31:37Z: BceArchitectureDocumentationTest failed because the BCE baseline document and README links were absent.",
+    "Step 05 Green confirmed on 2026-06-04T19:32:16Z: BCE baseline documentation and README links satisfied BceArchitectureDocumentationTest without modifying Step 04 tests.",
+    "Step 06 verification completed on 2026-06-04T19:34:28Z; targeted BCE tests, realworld-api-st build, and scaffold verification passed. Full API verify remains blocked by existing MongoDB/Testcontainers environment requirements."
   ]
 }

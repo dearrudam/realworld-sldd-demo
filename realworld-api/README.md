@@ -4,6 +4,10 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
 
+## RealWorld Architecture
+
+Generated starter resources are scaffold code only and are not part of the RealWorld API contract. Future capability workflows must follow `docs/domain-model.md` for domain decisions and `docs/bce-architecture.md` for BCE package layout, layer responsibilities, cross-component collaboration, and test isolation.
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
