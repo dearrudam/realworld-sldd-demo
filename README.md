@@ -1,23 +1,51 @@
-# ![RealWorld Example App](logo.png)
+# RealWorld Quarkus SLDD Demo
 
-> ### [YOUR_FRAMEWORK] codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
+This repository implements the RealWorld backend API with Quarkus using an SLDD workflow.
 
+The workspace currently contains scaffolded Quarkus applications. Full RealWorld behavior is intentionally deferred to later SLDD-scoped changes.
 
-### [Demo](https://demo.realworld.build/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
+## Projects
 
+- `realworld-api`: Quarkus backend API application using Quarkus REST JSON-B and the approved JNoSQL MongoDB extension.
+- `realworld-api-st`: standalone Quarkus system-test application using Quarkus REST Client to validate `realworld-api` over HTTP.
+- `.sldd/specs/realworld-quarkus-apps/`: SLDD journal and approved design artifacts for this scaffold.
 
-This codebase was created to demonstrate a fully fledged fullstack application built with **[YOUR_FRAMEWORK]** including CRUD operations, authentication, routing, pagination, and more.
+## Architecture
 
-We've gone to great lengths to adhere to the **[YOUR_FRAMEWORK]** community styleguides & best practices.
+`realworld-api-st` must stay black-box. It communicates with `realworld-api` over HTTP and must not depend on API implementation classes or Maven artifacts.
 
-For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
+Generated starter endpoints may exist as Quarkus scaffold code, but they are not RealWorld API contract. RealWorld features such as authentication, users, profiles, articles, comments, favorites, feeds, and tags will be specified and implemented in later workflows.
 
+## Build
 
-# How it works
+Build the API application:
 
-> Describe the general architecture of your app here
+```bash
+cd realworld-api
+mvn verify
+```
 
-# Getting started
+Build the standalone system-test application:
 
-> npm install, npm start, etc.
+```bash
+cd realworld-api-st
+mvn verify
+```
 
+Verify the workspace scaffold from the repository root:
+
+```bash
+sh scripts/verify-scaffold.sh
+```
+
+## Quarkus Guides
+
+- Quarkus REST: https://quarkus.io/guides/rest
+- Quarkus REST Client: https://quarkus.io/guides/rest-client
+- Quarkus MongoDB guide: https://quarkus.io/guides/mongodb
+
+## SLDD
+
+SLDD keeps product intent, codebase context, design, Red tests, Green implementation, and verification artifacts under `.sldd/specs/<feature-name>/`.
+
+The active scaffold workflow is `.sldd/specs/realworld-quarkus-apps/`.
