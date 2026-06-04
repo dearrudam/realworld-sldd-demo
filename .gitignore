@@ -42,3 +42,4 @@ target/
 # Native image outputs
 *-runner
 *-runner.jar
+/.antigravitycli/d340bd53-cb5c-4b8e-9990-dd769c2d43b3.json
