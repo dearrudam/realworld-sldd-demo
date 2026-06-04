@@ -9,12 +9,15 @@ The workspace currently contains scaffolded Quarkus applications. Full RealWorld
 - `realworld-api`: Quarkus backend API application using Quarkus REST JSON-B and the approved JNoSQL MongoDB extension.
 - `realworld-api-st`: standalone Quarkus system-test application using Quarkus REST Client to validate `realworld-api` over HTTP.
 - `.sldd/specs/realworld-quarkus-apps/`: SLDD journal and approved design artifacts for this scaffold.
+- `realworld-api/docs/domain-model.md`: canonical RealWorld domain model reference for future domain implementation workflows.
 
 ## Architecture
 
 `realworld-api-st` must stay black-box. It communicates with `realworld-api` over HTTP and must not depend on API implementation classes or Maven artifacts.
 
 Generated starter endpoints may exist as Quarkus scaffold code, but they are not RealWorld API contract. RealWorld features such as authentication, users, profiles, articles, comments, favorites, feeds, and tags will be specified and implemented in later workflows.
+
+Domain-affecting implementation work must follow `realworld-api/docs/domain-model.md` before changing entities, DTOs, repositories, validation rules, persistence mappings, or relationship behavior.
 
 ## Build
 

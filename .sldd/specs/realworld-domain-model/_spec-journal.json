@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "feature": "realworld-domain-model",
+  "workflow": "sldd",
+  "kind": "feature",
+  "title": "RealWorld Domain Model Reference",
+  "current_step": "complete",
+  "steps": {
+    "01": {
+      "status": "complete",
+      "artifact": "01-product-intent-specification.md",
+      "updated_at": "2026-06-04T04:38:05Z"
+    },
+    "99": {
+      "status": "complete",
+      "artifact": "existing-codebase-understanding.md",
+      "updated_at": "2026-06-04T04:40:49Z"
+    },
+    "02": {
+      "status": "complete",
+      "artifact": "02-high-level-technical-design.md",
+      "updated_at": "2026-06-04T04:40:49Z"
+    },
+    "03": {
+      "status": "complete",
+      "artifact": "03-low-level-design-and-version-policy.md",
+      "updated_at": "2026-06-04T04:40:49Z"
+    },
+    "04": {
+      "status": "complete",
+      "evidence": "red_confirmed",
+      "updated_at": "2026-06-04T04:43:17Z"
+    },
+    "05": {
+      "status": "complete",
+      "evidence": "green_confirmed",
+      "updated_at": "2026-06-04T04:44:32Z"
+    },
+    "06": {
+      "status": "complete",
+      "artifact": "06-verification-and-feedback-report.md",
+      "updated_at": "2026-06-04T04:45:31Z"
+    }
+  },
+  "relationships": {
+    "predecessors": [
+      "realworld-quarkus-apps"
+    ]
+  },
+  "notes": [
+    "Step 01 draft was approved by user during SLDD exploration on 2026-06-04, but remained pending until predecessor workflow realworld-quarkus-apps completed Step 06.",
+    "Step 01 predecessor gate was satisfied on 2026-06-04 after realworld-quarkus-apps Step 06 completion was confirmed."
+  ]
+}
