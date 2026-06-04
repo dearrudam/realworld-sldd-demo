@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "feature": "realworld-capability-decomposition",
+  "workflow": "sldd",
+  "kind": "workflow-set",
+  "title": "RealWorld Capability Decomposition",
+  "current_step": "02-scaffold-children",
+  "steps": {
+    "01-workflow-set-plan": {
+      "status": "complete",
+      "artifact": "01-workflow-set-plan.md",
+      "updated_at": "2026-06-04T16:45:16Z"
+    },
+    "02-scaffold-children": {
+      "status": "pending"
+    },
+    "03-verify-workflow-set": {
+      "status": "pending"
+    }
+  },
+  "workflowSet": {
+    "children": [
+      {
+        "name": "realworld-bce-architecture",
+        "title": "BCE Architecture Baseline",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-domain-model"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-authentication",
+        "title": "Authentication Capability",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-bce-architecture"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-users",
+        "title": "Users Capability",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-authentication"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-profiles",
+        "title": "Profiles Capability",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-users"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-articles",
+        "title": "Articles Capability",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-users",
+          "realworld-profiles"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-comments",
+        "title": "Comments Capability",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-articles"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-favorites",
+        "title": "Favorites Capability",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-articles"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-tags",
+        "title": "Tags Capability",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-articles"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      }
+    ]
+  },
+  "notes": [
+    "Parent workflow-set plan approved by user during SLDD exploration on 2026-06-04.",
+    "Child workflows are proposed only; Step 02 scaffold requires separate explicit approval."
+  ]
+}
