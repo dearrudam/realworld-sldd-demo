@@ -8,6 +8,7 @@ This directory contains the standalone Quarkus system-test application for `real
 - Use Quarkus REST Client for future calls to the API application.
 - Do not import API implementation classes, domain classes, repositories, or generated sources.
 - Do not declare a Maven dependency on `realworld-api`.
+- Follow `../realworld-api/docs/bce-architecture.md` for black-box system-test isolation rules.
 
 ## Current Scaffold Contract
 

@@ -9,6 +9,7 @@ This directory contains the Quarkus RealWorld backend API application.
 - Use the approved JNoSQL MongoDB extension for future MongoDB persistence work unless a later SLDD step changes that decision.
 - Do not add dependencies on `realworld-api-st`.
 - Follow `docs/domain-model.md` before changing entities, DTOs, repositories, validation rules, persistence mappings, or relationship behavior.
+- Follow `docs/bce-architecture.md` before changing package layout, BCE layer responsibilities, cross-component collaboration, or test isolation.
 
 ## Current Scaffold Contract
 

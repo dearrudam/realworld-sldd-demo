@@ -14,6 +14,7 @@ This repository is a Quarkus + SLDD RealWorld backend workspace.
 - Keep `realworld-api-st` independent from `realworld-api` internals; do not add a Maven dependency from the system-test app to the API app.
 - Prefer Quarkus extensions over custom infrastructure when adding capabilities.
 - Keep README documentation current after structural or behavioral changes.
+- Follow `realworld-api/docs/bce-architecture.md` for RealWorld backend package layout, BCE layer responsibilities, cross-component collaboration, and test isolation.
 - Do not treat generated starter endpoints as RealWorld API contract.
 
 ## Verification

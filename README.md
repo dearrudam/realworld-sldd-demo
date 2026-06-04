@@ -10,6 +10,7 @@ The workspace currently contains scaffolded Quarkus applications. Full RealWorld
 - `realworld-api-st`: standalone Quarkus system-test application using Quarkus REST Client to validate `realworld-api` over HTTP.
 - `.sldd/specs/realworld-quarkus-apps/`: SLDD journal and approved design artifacts for this scaffold.
 - `realworld-api/docs/domain-model.md`: canonical RealWorld domain model reference for future domain implementation workflows.
+- `realworld-api/docs/bce-architecture.md`: BCE package, component responsibility, cross-component, and test-isolation baseline for future capability workflows.
 
 ## Architecture
 
@@ -17,7 +18,7 @@ The workspace currently contains scaffolded Quarkus applications. Full RealWorld
 
 Generated starter endpoints may exist as Quarkus scaffold code, but they are not RealWorld API contract. RealWorld features such as authentication, users, profiles, articles, comments, favorites, feeds, and tags will be specified and implemented in later workflows.
 
-Domain-affecting implementation work must follow `realworld-api/docs/domain-model.md` before changing entities, DTOs, repositories, validation rules, persistence mappings, or relationship behavior.
+Domain-affecting implementation work must follow `realworld-api/docs/domain-model.md` before changing entities, DTOs, repositories, validation rules, persistence mappings, or relationship behavior. Future capability implementation must also follow `realworld-api/docs/bce-architecture.md` for package layout, layer responsibilities, cross-component collaboration, and test isolation.
 
 ## Build
 
