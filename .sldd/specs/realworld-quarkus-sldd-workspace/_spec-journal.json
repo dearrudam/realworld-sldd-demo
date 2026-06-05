@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "name": "realworld-quarkus-sldd-workspace",
+  "workflow": "sldd",
+  "kind": "workflow-set",
+  "title": "RealWorld Quarkus SLDD Workspace",
+  "steps": {
+    "01-workflow-set-plan": {
+      "status": "complete",
+      "artifact": "01-workflow-set-plan.md",
+      "updated_at": "2026-06-05T04:16:49Z"
+    },
+    "02-scaffold-children": {
+      "status": "pending"
+    },
+    "03-verify-workflow-set": {
+      "status": "pending"
+    }
+  },
+  "workflowSet": {
+    "children": [
+      {
+        "name": "realworld-api-contract-baseline",
+        "title": "RealWorld API Contract Baseline",
+        "kind": "feature",
+        "predecessors": [],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "workspace-quarkus-baseline",
+        "title": "Quarkus Workspace Baseline",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-api-contract-baseline"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-architecture-baseline",
+        "title": "RealWorld API Architecture Baseline",
+        "kind": "feature",
+        "predecessors": [
+          "workspace-quarkus-baseline"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-system-test-strategy",
+        "title": "RealWorld Standalone System-Test Strategy",
+        "kind": "feature",
+        "predecessors": [
+          "workspace-quarkus-baseline",
+          "realworld-api-contract-baseline"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-api-application-shell",
+        "title": "RealWorld API Application Shell",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-architecture-baseline"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-api-st-shell",
+        "title": "RealWorld API System-Test Application Shell",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-system-test-strategy"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-auth-user-api",
+        "title": "RealWorld Auth and User API",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-api-application-shell",
+          "realworld-api-st-shell"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-profiles-api",
+        "title": "RealWorld Profiles API",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-auth-user-api"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "realworld-articles-api",
+        "title": "RealWorld Articles API",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-auth-user-api",
+          "realworld-profiles-api"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      },
+      {
+        "name": "sldd-demo-documentation",
+        "title": "SLDD Demo Documentation",
+        "kind": "feature",
+        "predecessors": [
+          "realworld-api-application-shell",
+          "realworld-api-st-shell",
+          "realworld-auth-user-api",
+          "realworld-profiles-api",
+          "realworld-articles-api"
+        ],
+        "scaffold": {
+          "state": "proposed"
+        }
+      }
+    ]
+  }
+}
