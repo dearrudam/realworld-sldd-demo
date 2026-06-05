@@ -15,9 +15,9 @@ For more information on how to this works with other frontends/backends, head ov
 
 # How it works
 
-> Describe the general architecture of your app here
+> {Describe the general architecture of your app here}
 
 # Getting started
 
-> npm install, npm start, etc.
+> {Describe how to get the app running here}
 

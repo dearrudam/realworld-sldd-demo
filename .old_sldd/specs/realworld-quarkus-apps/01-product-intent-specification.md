@@ -28,7 +28,7 @@ The project should demonstrate a spec-driven development flow where SLDD guides 
 - API artifactId: `realworld-api`
 - Standalone test artifactId: `realworld-api-st`
 - `realworld-api` requested extensions: `rest-jsonb`, `quarkus-jnosql-mongodb`
-- `realworld-api-st` requested extension: `rest-client`
+- `realworld-api-st` requested extension: `rest-client` and with `assertj` for assertions.
 
 # Success Metrics
 
