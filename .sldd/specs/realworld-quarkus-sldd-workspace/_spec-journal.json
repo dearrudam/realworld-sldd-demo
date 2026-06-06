@@ -11,10 +11,12 @@
       "updated_at": "2026-06-05T04:16:49Z"
     },
     "02-scaffold-children": {
-      "status": "pending"
+      "status": "complete",
+      "updated_at": "2026-06-05T04:27:57Z"
     },
     "03-verify-workflow-set": {
-      "status": "pending"
+      "status": "complete",
+      "updated_at": "2026-06-05T04:31:34Z"
     }
   },
   "workflowSet": {
@@ -25,7 +27,9 @@
         "kind": "feature",
         "predecessors": [],
         "scaffold": {
-          "state": "proposed"
+          "state": "created",
+          "journal": "../realworld-api-contract-baseline/_spec-journal.json",
+          "originArtifact": "01-workflow-set-plan.md"
         }
       },
       {
@@ -36,7 +40,9 @@
           "realworld-api-contract-baseline"
         ],
         "scaffold": {
-          "state": "proposed"
+          "state": "created",
+          "journal": "../workspace-quarkus-baseline/_spec-journal.json",
+          "originArtifact": "01-workflow-set-plan.md"
         }
       },
       {
@@ -47,7 +53,9 @@
           "workspace-quarkus-baseline"
         ],
         "scaffold": {
-          "state": "proposed"
+          "state": "created",
+          "journal": "../realworld-architecture-baseline/_spec-journal.json",
+          "originArtifact": "01-workflow-set-plan.md"
         }
       },
       {
@@ -59,7 +67,9 @@
           "realworld-api-contract-baseline"
         ],
         "scaffold": {
-          "state": "proposed"
+          "state": "created",
+          "journal": "../realworld-system-test-strategy/_spec-journal.json",
+          "originArtifact": "01-workflow-set-plan.md"
         }
       },
       {
@@ -70,7 +80,9 @@
           "realworld-architecture-baseline"
         ],
         "scaffold": {
-          "state": "proposed"
+          "state": "created",
+          "journal": "../realworld-api-application-shell/_spec-journal.json",
+          "originArtifact": "01-workflow-set-plan.md"
         }
       },
       {
@@ -81,7 +93,9 @@
           "realworld-system-test-strategy"
         ],
         "scaffold": {
-          "state": "proposed"
+          "state": "created",
+          "journal": "../realworld-api-st-shell/_spec-journal.json",
+          "originArtifact": "01-workflow-set-plan.md"
         }
       },
       {
@@ -93,7 +107,9 @@
           "realworld-api-st-shell"
         ],
         "scaffold": {
-          "state": "proposed"
+          "state": "created",
+          "journal": "../realworld-auth-user-api/_spec-journal.json",
+          "originArtifact": "01-workflow-set-plan.md"
         }
       },
       {
@@ -104,7 +120,9 @@
           "realworld-auth-user-api"
         ],
         "scaffold": {
-          "state": "proposed"
+          "state": "created",
+          "journal": "../realworld-profiles-api/_spec-journal.json",
+          "originArtifact": "01-workflow-set-plan.md"
         }
       },
       {
@@ -116,7 +134,9 @@
           "realworld-profiles-api"
         ],
         "scaffold": {
-          "state": "proposed"
+          "state": "created",
+          "journal": "../realworld-articles-api/_spec-journal.json",
+          "originArtifact": "01-workflow-set-plan.md"
         }
       },
       {
@@ -131,9 +151,14 @@
           "realworld-articles-api"
         ],
         "scaffold": {
-          "state": "proposed"
+          "state": "created",
+          "journal": "../sldd-demo-documentation/_spec-journal.json",
+          "originArtifact": "01-workflow-set-plan.md"
         }
       }
     ]
-  }
+  },
+  "notes": [
+    "2026-06-05T04:31:34Z: Workflow-set verification confirmed parent journal, approved plan artifact, created child journals, pending child Step 01 entries, scaffold origins, and predecessor paths."
+  ]
 }
