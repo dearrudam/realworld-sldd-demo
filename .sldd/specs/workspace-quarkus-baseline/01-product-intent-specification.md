@@ -1,58 +1,42 @@
-# Product Intent: Quarkus Workspace Baseline
+# Problem Statement
 
-## Workflow Kind
+The repository needs a minimal, explicit Quarkus workspace layout before architecture, application shell, system-test shell, and endpoint workflows can proceed. The current repository is still a RealWorld template plus SLDD artifacts, so downstream work needs agreed module boundaries, build/run conventions, and local development expectations.
 
-`feature`
+# Target Users
 
-## Parent Workflow-Set
+- Developers creating and running `realworld-api`.
+- Developers creating and running `realworld-api-st` as a standalone HTTP system-test application.
+- SLDD reviewers verifying that later workflows use a consistent workspace structure.
 
-`realworld-quarkus-sldd-workspace`
+# Formalized Exploration Decisions
 
-## Origin
+- The workspace will contain two Quarkus applications: `realworld-api` and `realworld-api-st`.
+- This workflow owns only the physical workspace baseline: project/module layout, build/run conventions, minimal generated application structure, and reserved local ports/profiles.
+- The workflow must remain compatible with the approved `realworld-api-contract-baseline` and must not implement RealWorld business endpoints.
+- Quarkus extension selection and exact generated structure must be decided in design before implementation, following Quarkus tooling guidance.
 
-This Step 01 draft was scaffolded from:
+# Success Metrics
 
-- Parent journal: `../realworld-quarkus-sldd-workspace/_spec-journal.json`
-- Parent artifact: `../realworld-quarkus-sldd-workspace/01-workflow-set-plan.md`
+- Repository layout for both Quarkus apps is documented and created with minimal runnable structure.
+- Build/run/test commands are clear for local development.
+- Later architecture and feature workflows can add BCE structure, persistence, security, endpoints, and HTTP system tests without reorganizing the workspace.
+- The baseline avoids premature business logic.
 
-## Scope
+# Out of Scope
 
-Included:
+- RealWorld endpoint implementation, persistence model, authentication internals, BCE package details, and system-test scenario implementation.
+- Production deployment, cloud infrastructure, frontend, and advanced observability.
+- Detailed API behavior beyond referencing the approved contract baseline.
 
-- Define and create the repository or module layout for `realworld-api` and `realworld-api-st`, including build and run conventions.
+# Risks and Assumptions
 
-Excluded:
+- Quarkus project generation may require choosing extensions before code is written.
+- A poor module layout would force later churn; this workflow should keep the structure simple and explicit.
+- The standalone system-test app may need target URL/port conventions without depending on endpoint implementation yet.
 
-- Business endpoint implementation.
-- Detailed BCE architecture decisions beyond workspace-level structure.
-- System-test scenario implementation.
+# Acceptance Criteria (Given/When/Then)
 
-## Workflow Precedence
-
-Required predecessors:
-
-- `../realworld-api-contract-baseline/_spec-journal.json`
-
-Approval gate:
-
-- This Step 01 must not be marked complete until required predecessors have completed Step 06 verification.
-
-## Product Intent
-
-Establish the physical Quarkus workspace baseline needed for the RealWorld API application and standalone HTTP system-test application.
-
-## Acceptance Criteria Draft
-
-- The workflow defines the intended repository layout for both Quarkus applications.
-- The workflow establishes build, run, and local development conventions.
-- The workflow creates only the minimal workspace structure approved by the design steps.
-- The resulting layout supports later API and system-test workflows.
-
-## Open Questions
-
-- Should the two Quarkus applications use separate build roots or a multi-module layout?
-- Which ports, profiles, and local run conventions should be reserved for each application?
-
-## Approval Status
-
-Pending explicit Step 01 approval.
+- Given a developer clones the repository, When they inspect the workspace baseline, Then they can identify where `realworld-api` and `realworld-api-st` live and how each is built/run.
+- Given later workflows need to add API architecture or endpoint slices, When they use this baseline, Then no workspace reorganization is required.
+- Given `realworld-api-st` is intended to test over HTTP, When conventions are inspected, Then target API URL/port assumptions are documented.
+- Given this workflow completes, When reviewing changes, Then no RealWorld business endpoint behavior has been implemented.

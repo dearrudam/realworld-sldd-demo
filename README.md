@@ -1,23 +1,53 @@
-# ![RealWorld Example App](logo.png)
+# RealWorld Quarkus SLDD Demo
 
-> ### [YOUR_FRAMEWORK] codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
+This repository implements the RealWorld backend API using Quarkus and an SLDD workflow.
 
+## Workspace
 
-### [Demo](https://demo.realworld.build/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
+- `realworld-api/` — Quarkus REST application for the future RealWorld backend API.
+- `realworld-api-st/` — standalone Quarkus application for future HTTP system tests against `realworld-api`.
+- `.sldd/specs/` — SLDD workflow journals and approved artifacts.
+- `scripts/` — repository-level verification scripts.
 
+## Current baseline
 
-This codebase was created to demonstrate a fully fledged fullstack application built with **[YOUR_FRAMEWORK]** including CRUD operations, authentication, routing, pagination, and more.
+The workspace baseline has been created, but RealWorld business endpoints are not implemented yet. API behavior must trace to:
 
-We've gone to great lengths to adhere to the **[YOUR_FRAMEWORK]** community styleguides & best practices.
+- `.sldd/specs/realworld-api-contract-baseline/realworld-api-contract-baseline.md`
 
-For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
+## Local development
 
+Run commands from each application directory.
 
-# How it works
+```bash
+cd realworld-api
+./mvnw quarkus:dev
+./mvnw test
+./mvnw install
+```
 
-> {Describe the general architecture of your app here}
+```bash
+cd realworld-api-st
+./mvnw quarkus:dev
+./mvnw test
+./mvnw install
+```
 
-# Getting started
+Local ports:
 
-> {Describe how to get the app running here}
+- `realworld-api`: `8080`
+- `realworld-api-st`: `8081`
+- `realworld-api-st` target API URL: `http://localhost:8080`
 
+## Verification
+
+```bash
+./scripts/check-realworld-contract-baseline.sh
+./scripts/check-workspace-quarkus-baseline.sh
+```
+
+## Quarkus guides
+
+- [Quarkus REST](https://quarkus.io/guides/rest)
+- [Quarkus REST Client](https://quarkus.io/guides/rest-client)
+- [Creating your first Quarkus application](https://quarkus.io/guides/getting-started)
