@@ -1,58 +1,40 @@
-# Product Intent: RealWorld API Contract Baseline
+# Problem Statement
 
-## Workflow Kind
+O projeto precisa de uma linha de base explícita do contrato externo da RealWorld API antes de criar workspace, arquitetura, testes de sistema ou implementação. Sem essa linha de base, os workflows posteriores podem divergir sobre endpoints, payloads, autenticação, códigos HTTP, erros e limites de aceite.
 
-`feature`
+# Target Users
 
-## Parent Workflow-Set
+- Desenvolvedores implementando `realworld-api` em Quarkus.
+- Desenvolvedores criando testes HTTP standalone em `realworld-api-st`.
+- Revisores usando SLDD para validar se design, testes e implementação seguem o contrato RealWorld.
 
-`realworld-quarkus-sldd-workspace`
+# Formalized Exploration Decisions
 
-## Origin
+- A fonte de comportamento é a especificação pública RealWorld/Conduit API, normalizada localmente neste workflow para uso pelos demais workflows.
+- Este workflow produz decisões contratuais; não implementa aplicação nem testes de endpoint.
+- A linha de base deve cobrir inventário de endpoints, autenticação Bearer/JWT, envelopes JSON, convenções de validação/erro e fronteiras iniciais de aceite.
 
-This Step 01 draft was scaffolded from:
+# Success Metrics
 
-- Parent journal: `../realworld-quarkus-sldd-workspace/_spec-journal.json`
-- Parent artifact: `../realworld-quarkus-sldd-workspace/01-workflow-set-plan.md`
+- Workflows posteriores conseguem referenciar um contrato local único.
+- Endpoint inventory cobre auth/user, profiles, articles, comments, favorites, feed e tags.
+- Convenções de request/response/error/auth são claras o suficiente para orientar design e testes.
+- Questões abertas ficam registradas sem bloquear indevidamente o próximo workflow.
 
-## Scope
+# Out of Scope
 
-Included:
+- Código de produção, Quarkus workspace, persistência, arquitetura BCE, system tests e frontend.
+- Decisões de deploy, observabilidade avançada ou otimizações não exigidas pelo contrato.
 
-- Define the RealWorld API contract source, endpoint inventory, request and response conventions, error conventions, authentication expectations, and initial acceptance boundaries.
+# Risks and Assumptions
 
-Excluded:
+- A especificação RealWorld pública pode ter ambiguidades; decisões locais devem resolver apenas o necessário.
+- JWT/token behavior será detalhado o bastante para contratos HTTP, mas implementação criptográfica fica para workflows posteriores.
+- Validações específicas podem ser refinadas durante workflows de endpoint, desde que não quebrem esta baseline.
 
-- Application implementation code.
-- Endpoint-specific business implementation.
-- Production deployment or frontend behavior.
+# Acceptance Criteria (Given/When/Then)
 
-## Workflow Precedence
-
-Required predecessors:
-
-- None.
-
-Approval gate:
-
-- This Step 01 must not be marked complete until required predecessors have completed Step 06 verification.
-
-## Product Intent
-
-Establish a shared external behavior target for the Quarkus RealWorld backend so later SLDD workflows can design, test, and implement against consistent API expectations.
-
-## Acceptance Criteria Draft
-
-- The workflow identifies the authoritative RealWorld API contract source or sources.
-- The workflow captures the endpoint inventory needed by later implementation workflows.
-- The workflow defines request, response, error, and authentication conventions at a level sufficient for downstream design.
-- The workflow clarifies initial acceptance boundaries and open contract questions.
-
-## Open Questions
-
-- Which RealWorld contract source is authoritative for this repository?
-- Which contract details should be normalized locally before implementation begins?
-
-## Approval Status
-
-Pending explicit Step 01 approval.
+- Given um workflow posterior precisa de endpoints RealWorld, When ele consulta esta baseline, Then encontra endpoint inventory e convenções HTTP/JSON/auth aplicáveis.
+- Given há ambiguidade na especificação pública, When a baseline normaliza uma decisão, Then essa decisão fica documentada como fonte local para downstream.
+- Given um endpoint exige usuário autenticado, When o contrato é consultado, Then o uso de Bearer token e resposta de erro esperada estão definidos em alto nível.
+- Given este workflow termina, When o próximo workflow inicia, Then não há código de aplicação produzido por este Step 01.
