@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "name": "realworld-system-test-strategy",
+  "workflow": "sldd",
+  "kind": "feature",
+  "title": "RealWorld Standalone System-Test Strategy",
+  "steps": {
+    "01-product-intent": {
+      "status": "pending",
+      "artifact": "01-product-intent-specification.md",
+      "origin": {
+        "type": "workflow-set-scaffold",
+        "journal": "../realworld-quarkus-sldd-workspace/_spec-journal.json",
+        "artifact": "../realworld-quarkus-sldd-workspace/01-workflow-set-plan.md"
+      },
+      "updated_at": "2026-06-05T04:27:57Z"
+    }
+  },
+  "relationships": {
+    "parents": [
+      "../realworld-quarkus-sldd-workspace/_spec-journal.json"
+    ],
+    "predecessors": [
+      "../workspace-quarkus-baseline/_spec-journal.json",
+      "../realworld-api-contract-baseline/_spec-journal.json"
+    ]
+  }
+}
