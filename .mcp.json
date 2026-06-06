@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "quarkus-agent-local": {
+      "command": "jbang",
+      "args": [
+        "quarkus-agent-mcp@quarkusio"
+      ],
+      "lifecycle": "lazy",
+      "idleTimeout": 10,
+      "directTools": true
+    }
+  }
+}
