@@ -1,59 +1,57 @@
 # Product Intent: RealWorld Standalone System-Test Strategy
 
-## Workflow Kind
+## Problem Statement
 
-`feature`
+Endpoint workflows need a repeatable way to add HTTP-level system tests in `realworld-api-st` without coupling each scenario to ad hoc target URLs, authentication assumptions, or data-cleanup conventions.
 
-## Parent Workflow-Set
+## Target Users
 
-`realworld-quarkus-sldd-workspace`
+- RealWorld API developers adding endpoint-specific workflows.
+- Maintainers running standalone system tests against `realworld-api` in local, CI, or packaged environments.
 
-## Origin
+## Formalized Exploration Decisions
 
-This Step 01 draft was scaffolded from:
+- System tests live in the dedicated `realworld-api-st` Quarkus module.
+- System tests target `realworld-api` over HTTP through a configurable base URL.
+- Endpoint-specific workflows own their scenario details; this workflow owns only the reusable strategy and shell conventions.
+- The target URL is expressed by `realworld-api.base-url` and bridged to the existing REST Client configuration key `service_uri`.
+- Authentication is a declared strategy concern but remains unauthenticated until a security workflow introduces credentials.
+- Data isolation is scenario-owned for now: tests create unique data and avoid global reset assumptions until persistence/reset endpoints exist.
 
-- Parent journal: `../realworld-quarkus-sldd-workspace/_spec-journal.json`
-- Parent artifact: `../realworld-quarkus-sldd-workspace/01-workflow-set-plan.md`
+## Success Metrics
 
-## Scope
+- `realworld-api-st` documents and exposes a stable target-API configuration convention.
+- Future endpoint system tests can reuse the same REST Client config key and strategy rules.
+- The strategy is verified by executable tests that do not require a running `realworld-api` service.
+- README guidance is clear enough for local and CI users to set a target API URL.
 
-Included:
+## Out of Scope
 
-- Define how `realworld-api-st` validates `realworld-api` over HTTP, including target configuration, data isolation, auth setup, scenario style, and verification boundaries.
-
-Excluded:
-
-- Implementing endpoint-specific system tests.
+- Implementing endpoint-specific RealWorld scenarios.
 - Implementing business endpoints in `realworld-api`.
-- Non-HTTP integration testing strategy.
+- Implementing authentication, persistence cleanup, data reset APIs, containers, or non-HTTP integration tests.
+- Changing the Quarkus platform version or adding Maven dependencies.
 
-## Workflow Precedence
+## Risks and Assumptions
 
-Required predecessors:
+- The current API module is scaffold-only, so strategy verification must avoid depending on endpoint behavior.
+- Future security and persistence workflows may replace the unauthenticated and scenario-owned data-isolation defaults.
+- `realworld-api-st` already includes REST Client extensions; no extension changes are required for this workflow.
 
-- `../workspace-quarkus-baseline/_spec-journal.json`
-- `../realworld-api-contract-baseline/_spec-journal.json`
+## Acceptance Criteria (Given/When/Then)
 
-Approval gate:
+### AC1: Target API configuration
 
-- This Step 01 must not be marked complete until required predecessors have completed Step 06 verification.
+Given a developer runs `realworld-api-st`, when system-test clients are configured, then they use a single target API base URL convention through `realworld-api.base-url` and REST Client config key `service_uri`.
 
-## Product Intent
+### AC2: Data isolation strategy
 
-Define the standalone HTTP system-test approach before endpoint workflows add scenario coverage through `realworld-api-st`.
+Given endpoint-specific system tests are added later, when they need data isolation, then the baseline strategy tells them to use scenario-owned unique data and not assume a global reset endpoint.
 
-## Acceptance Criteria Draft
+### AC3: Authentication strategy
 
-- The workflow defines target API configuration for system tests.
-- The workflow covers data isolation, authentication setup, scenario style, and verification boundaries.
-- The strategy supports endpoint-specific workflows without coupling test progress to the parent workflow-set.
-- The strategy is concrete enough to guide the `realworld-api-st` shell workflow.
+Given authentication is not implemented yet, when system tests are authored, then the baseline strategy explicitly declares unauthenticated execution until a later security workflow changes the contract.
 
-## Open Questions
+### AC4: Verification boundaries
 
-- How should the system-test app discover the target API URL?
-- What data reset or isolation mechanism should endpoint scenarios expect?
-
-## Approval Status
-
-Pending explicit Step 01 approval.
+Given this workflow is only the standalone strategy, when it completes, then it verifies reusable strategy contracts and README guidance but does not add endpoint-specific scenario coverage.
