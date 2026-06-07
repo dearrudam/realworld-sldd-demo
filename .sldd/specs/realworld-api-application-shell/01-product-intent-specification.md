@@ -41,18 +41,22 @@ Approval gate:
 
 Create the minimal runnable Quarkus API application shell that later business API workflows can extend safely.
 
-## Acceptance Criteria Draft
+## Formalized Decisions
+
+- Health/readiness baseline: add SmallRye Health and expose the standard Quarkus health endpoints `/q/health`, `/q/health/live`, and `/q/health/ready`.
+- Initial readiness behavior verifies only that the application shell is up; it must not depend on MongoDB, JWT, or future business integrations yet.
+- BCE structure baseline: document the convention only and do not create BCE packages or classes before the first business slice.
+- Future business slices introduce their own packages following `dev.realworld.<business-component>.<boundary|control|entity>`.
+
+## Acceptance Criteria
 
 - The workflow creates a minimal `realworld-api` Quarkus application following the approved workspace and architecture baselines.
-- The shell includes baseline configuration and basic operational endpoints or readiness conventions as approved in design.
-- The shell establishes the initial BCE skeleton without implementing business endpoints.
+- The shell includes baseline configuration and SmallRye Health-based operational endpoints.
+- The shell exposes `/q/health`, `/q/health/live`, and `/q/health/ready`.
+- The initial readiness behavior verifies only application-shell availability and does not require MongoDB, JWT, or future business integrations.
+- The shell documents the BCE package convention without creating fake or empty business-component packages/classes.
 - The shell can be built and run locally.
-
-## Open Questions
-
-- Which health or readiness behavior is required for the initial shell?
-- How much BCE package structure should exist before the first business slice?
 
 ## Approval Status
 
-Pending explicit Step 01 approval.
+Approved and saved.
