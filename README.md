@@ -11,9 +11,10 @@ This repository implements the RealWorld backend API using Quarkus and an SLDD w
 
 ## Current baseline
 
-The workspace baseline has been created, but RealWorld business endpoints are not implemented yet. API behavior must trace to:
+The workspace and architecture baselines have been created, but RealWorld business endpoints are not implemented yet. API behavior and implementation architecture must trace to:
 
 - `.sldd/specs/realworld-api-contract-baseline/realworld-api-contract-baseline.md`
+- `.sldd/specs/realworld-architecture-baseline/realworld-architecture-baseline.md`
 
 ## Local development
 
@@ -44,10 +45,13 @@ Local ports:
 ```bash
 ./scripts/check-realworld-contract-baseline.sh
 ./scripts/check-workspace-quarkus-baseline.sh
+./scripts/check-realworld-architecture-baseline.sh
 ```
 
 ## Quarkus guides
 
 - [Quarkus REST](https://quarkus.io/guides/rest)
+- [Writing JSON REST Services](https://quarkus.io/guides/rest-json)
 - [Quarkus REST Client](https://quarkus.io/guides/rest-client)
+- [Using JWT RBAC](https://quarkus.io/guides/security-jwt)
 - [Creating your first Quarkus application](https://quarkus.io/guides/getting-started)
