@@ -41,18 +41,23 @@ Approval gate:
 
 Create the standalone Quarkus system-test application shell so later workflows can add HTTP scenario coverage against `realworld-api`.
 
-## Acceptance Criteria Draft
+## Acceptance Criteria
 
 - The workflow creates a minimal `realworld-api-st` Quarkus application following the approved workspace and system-test strategy.
 - The shell can target a configurable `realworld-api` base URL over HTTP.
 - The shell provides a place for later scenario-oriented system tests.
+- The shell uses a JUnit/Quarkus test-suite execution model only: no system-test application endpoints and no startup test runner.
 - The shell can be built and run locally.
+
+## Decisions
+
+- Initial smoke scenario coverage is intentionally skipped in this shell workflow because `realworld-api` currently exposes no endpoint to verify.
+- Connectivity or business smoke coverage may be introduced by a later workflow once `realworld-api` exposes a health endpoint or RealWorld business endpoint.
 
 ## Open Questions
 
-- What is the first smoke scenario for verifying connectivity to `realworld-api`?
-- Should the system-test app expose endpoints, run tests at startup, or use another execution model?
+None.
 
 ## Approval Status
 
-Pending explicit Step 01 approval.
+Approved for Step 01.
