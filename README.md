@@ -11,7 +11,7 @@ This repository implements the RealWorld backend API using Quarkus and an SLDD w
 
 ## Current baseline
 
-The workspace and architecture baselines have been created, and `realworld-api` now provides a runnable application shell with SmallRye Health endpoints. RealWorld business endpoints are not implemented yet. API behavior and implementation architecture must trace to:
+The workspace and architecture baselines have been created, and `realworld-api` now provides a runnable application shell with SmallRye Health endpoints plus the RealWorld auth/current-user API slice. API behavior and implementation architecture trace to:
 
 - `.sldd/specs/realworld-api-contract-baseline/realworld-api-contract-baseline.md`
 - `.sldd/specs/realworld-architecture-baseline/realworld-architecture-baseline.md`
@@ -38,6 +38,7 @@ Local ports and shell endpoints:
 
 - `realworld-api`: `8080`
 - `realworld-api` health: `/q/health`, `/q/health/live`, `/q/health/ready`
+- Auth/current-user endpoints: `POST /api/users`, `POST /api/users/login`, `GET /api/user`, `PUT /api/user`
 - `realworld-api-st`: `8081`
 - `realworld-api-st` target API URL: `http://localhost:8080`
 
@@ -56,4 +57,7 @@ Local ports and shell endpoints:
 - [Writing JSON REST Services](https://quarkus.io/guides/rest-json)
 - [Quarkus REST Client](https://quarkus.io/guides/rest-client)
 - [Using JWT RBAC](https://quarkus.io/guides/security-jwt)
+- [Build, Sign and Encrypt JSON Web Tokens](https://quarkus.io/guides/security-jwt-build)
+- [Validation with Hibernate Validator](https://quarkus.io/guides/validation)
+- [MongoDB Client](https://quarkus.io/guides/mongodb)
 - [Creating your first Quarkus application](https://quarkus.io/guides/getting-started)
