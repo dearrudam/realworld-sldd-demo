@@ -29,6 +29,21 @@
       "status": "complete",
       "artifact": "03-low-level-design-and-version-policy.md",
       "updated_at": "2026-06-18T02:20:00Z"
+    },
+    "04-tests-red": {
+      "status": "complete",
+      "evidence": "red_confirmed",
+      "updated_at": "2026-06-17T03:38:00Z"
+    },
+    "05-implementation-green": {
+      "status": "complete",
+      "evidence": "green_confirmed",
+      "updated_at": "2026-06-18T02:04:13Z"
+    },
+    "06-verification": {
+      "status": "complete",
+      "artifact": "06-verification-and-feedback-report.md",
+      "updated_at": "2026-06-18T02:04:13Z"
     }
   },
   "relationships": {

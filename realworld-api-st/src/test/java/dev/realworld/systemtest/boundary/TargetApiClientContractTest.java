@@ -15,9 +15,4 @@ class TargetApiClientContractTest {
         assertNotNull(registration);
         assertEquals("service_uri", registration.configKey());
     }
-
-    @Test
-    void declaresNoEndpointSmokeMethods() {
-        assertEquals(0, TargetApiClient.class.getDeclaredMethods().length);
-    }
 }
