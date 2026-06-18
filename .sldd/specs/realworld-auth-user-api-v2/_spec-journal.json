@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "realworld-auth-user-api-v2",
+  "workflow": "sldd",
+  "kind": "feature",
+  "title": "RealWorld Auth and User API v2",
+  "steps": {
+    "01-product-intent": {
+      "status": "complete",
+      "artifact": "../realworld-auth-user-api/01-product-intent-specification.md",
+      "updated_at": "2026-06-18T06:20:00Z"
+    },
+    "99-codebase-context": {
+      "status": "complete",
+      "artifact": "../realworld-auth-user-api/existing-codebase-understanding.md",
+      "updated_at": "2026-06-18T06:20:00Z"
+    },
+    "02-high-level-design": {
+      "status": "complete",
+      "artifact": "../realworld-auth-user-api/02-high-level-technical-design.md",
+      "updated_at": "2026-06-18T06:20:00Z"
+    },
+    "03-low-level-design": {
+      "status": "complete",
+      "artifact": "../realworld-auth-user-api/03-low-level-design-and-version-policy.md",
+      "updated_at": "2026-06-18T06:20:00Z"
+    },
+    "04-tests-red": {
+      "status": "complete",
+      "evidence": "red_confirmed_jnosql_contract_rerun",
+      "updated_at": "2026-06-18T07:06:00Z",
+      "rerun_note": "Step 04 was redone to add architecture-aligned JNoSQL/MongoDB persistence contract coverage and to reject the previous in-memory repository implementation."
+    },
+    "05-implementation-green": {
+      "status": "complete",
+      "evidence": "green_confirmed_unit_and_contract_tests",
+      "updated_at": "2026-06-18T07:06:00Z",
+      "rerun_note": "Step 05 was redone to replace InMemoryUsers with Quarkus JNoSQL MongoDB repository wiring, entity annotations, Mongo index startup, and configuration from the approved low-level design."
+    },
+    "06-verification": {
+      "status": "complete",
+      "artifact": "06-verification-and-feedback-report.md",
+      "updated_at": "2026-06-18T07:06:00Z"
+    }
+  },
+  "relationships": {
+    "parents": [
+      "../realworld-quarkus-sldd-workspace/_spec-journal.json"
+    ],
+    "predecessors": [
+      "../realworld-api-application-shell/_spec-journal.json",
+      "../realworld-api-st-shell/_spec-journal.json"
+    ]
+  }
+}

@@ -1,5 +1,6 @@
 package dev.realworld.systemtest.entity;
 
 public enum AuthenticationMode {
-    NONE
+    NONE,
+    BEARER_TOKEN
 }

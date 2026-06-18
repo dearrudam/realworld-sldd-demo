@@ -17,7 +17,7 @@ class TargetApiClientContractTest {
     }
 
     @Test
-    void declaresNoEndpointSmokeMethods() {
-        assertEquals(0, TargetApiClient.class.getDeclaredMethods().length);
+    void declaresAuthUserEndpointMethods() {
+        assertEquals(4, TargetApiClient.class.getDeclaredMethods().length);
     }
 }

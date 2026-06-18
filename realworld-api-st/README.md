@@ -2,9 +2,9 @@
 
 Standalone Quarkus REST Client application shell for HTTP system tests targeting `realworld-api`.
 
-The module owns reusable system-test strategy contracts: target API URL configuration, REST Client config-key conventions, authentication defaults, data-isolation defaults, and verification boundaries. Endpoint-specific workflows add their own scenario coverage later.
+The module owns reusable system-test strategy contracts: target API URL configuration, REST Client config-key conventions, authentication defaults, data-isolation defaults, and verification boundaries. It also contains auth/user system tests for the first RealWorld business slice.
 
-Execution is JUnit/Quarkus test-suite based. The shell does not expose test-control endpoints, does not run tests at application startup, and currently performs no live smoke call because `realworld-api` has no exposed endpoint for this workflow.
+Execution is JUnit/Quarkus test-suite based. The target API is expected at `realworld-api.base-url` when endpoint-specific system tests are run.
 
 ## Local development
 
@@ -32,10 +32,9 @@ quarkus.rest-client.service_uri.url=${realworld-api.base-url}
 
 ## System-test strategy
 
-- Authentication mode is `NONE` until a security workflow introduces credentials.
+- Authentication modes include unauthenticated calls and bearer-token calls.
 - Data isolation is scenario-owned unique data; tests must not assume a global reset endpoint.
-- This baseline verifies reusable contracts only. It does not implement endpoint-specific RealWorld scenarios.
-- Initial live smoke coverage is intentionally skipped until `realworld-api` exposes a health or RealWorld business endpoint.
+- Auth/user system tests verify registration, login failure, and protected update behavior against a running target API.
 
 ## Quarkus guides
 

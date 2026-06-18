@@ -9,6 +9,7 @@
     <properties>
         <compiler-plugin.version>3.15.0</compiler-plugin.version>
         <maven.compiler.release>25</maven.compiler.release>
+        <maven.compiler.proc>full</maven.compiler.proc>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
@@ -34,6 +35,23 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest-jsonb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkiverse.jnosql</groupId>
+            <artifactId>quarkus-jnosql-mongodb</artifactId>
+            <version>3.4.13</version>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
