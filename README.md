@@ -11,10 +11,33 @@ This repository implements the RealWorld backend API using Quarkus and an SLDD w
 
 ## Current baseline
 
-The workspace and architecture baselines have been created, and `realworld-api` now provides a runnable application shell with SmallRye Health endpoints. RealWorld business endpoints are not implemented yet. API behavior and implementation architecture must trace to:
+The workspace and architecture baselines have been created. `realworld-api` provides Auth and User business endpoints plus SmallRye Health.
+
+### Implemented Features — Auth & User API
+
+| Endpoint | Method | Description | Auth |
+|---|---|---|---|
+| `/api/users` | POST | Register a new user | No |
+| `/api/users/login` | POST | Login with email + password | No |
+| `/api/user` | GET | Get current user profile | JWT Bearer |
+| `/api/user` | PUT | Update current user profile | JWT Bearer |
+
+All responses use the RealWorld `{user: {email, token, username, bio, image}}` envelope.
+
+### Key technologies
+
+- MongoDB persistence via JNoSQL (`quarkus-jnosql-mongodb`)
+- JWT authentication via SmallRye JWT (`quarkus-smallrye-jwt`)
+- PBKDF2 password hashing (JDK `SecretKeyFactory`)
+- Bean Validation via Hibernate Validator (`quarkus-hibernate-validator`)
+- JSON-B serialization (`quarkus-rest-jsonb`)
+- BCE architecture: `dev.realworld.authuser.{boundary,control,entity}`
+
+API behavior and implementation architecture trace to:
 
 - `.sldd/specs/realworld-api-contract-baseline/realworld-api-contract-baseline.md`
 - `.sldd/specs/realworld-architecture-baseline/realworld-architecture-baseline.md`
+- `.sldd/specs/realworld-auth-user-api/` (approved SLDD workflow artifacts)
 
 ## Local development
 
@@ -56,4 +79,6 @@ Local ports and shell endpoints:
 - [Writing JSON REST Services](https://quarkus.io/guides/rest-json)
 - [Quarkus REST Client](https://quarkus.io/guides/rest-client)
 - [Using JWT RBAC](https://quarkus.io/guides/security-jwt)
+- [JNoSQL MongoDB](https://quarkus.io/guides/jnosql)
+- [Using Hibernate Validator](https://quarkus.io/guides/validation)
 - [Creating your first Quarkus application](https://quarkus.io/guides/getting-started)
