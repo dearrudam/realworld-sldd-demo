@@ -1,21 +1,22 @@
 # realworld-api
 
-Quarkus REST application shell for the future RealWorld backend API.
+Quarkus REST backend for the RealWorld API demo.
 
-This module currently provides the runnable API shell and operational health/readiness baseline. RealWorld business endpoint behavior is not implemented yet.
+This module provides the runnable API shell, operational health/readiness baseline, and the first RealWorld business slice for authentication and current-user behavior. The auth/user slice follows the approved architecture by using Quarkus JNoSQL with MongoDB for user persistence.
 
 ## Current capabilities
 
-- Quarkus REST application shell on port `8080`.
-- SmallRye Health endpoints:
-  - `/q/health`
-  - `/q/health/live`
-  - `/q/health/ready`
-- Shell-only readiness: no MongoDB, JWT, or business dependency checks yet.
+- Quarkus REST API on port `8080`.
+- SmallRye Health endpoints under `/q/health`.
+- Auth/user JSON envelope endpoints under `/api`.
+- MongoDB document persistence through Quarkus JNoSQL for registered users.
+- PBKDF2 password hashing for registered users.
+- SmallRye JWT bearer tokens for protected current-user calls.
+- RealWorld-style error envelopes for validation and domain errors.
 
-## BCE convention for future slices
+## BCE convention
 
-Future RealWorld business slices create packages only when they introduce real behavior:
+RealWorld business slices use BCE packages:
 
 ```text
 dev.realworld.<business-component>.boundary
@@ -23,7 +24,7 @@ dev.realworld.<business-component>.control
 dev.realworld.<business-component>.entity
 ```
 
-This shell intentionally does not create placeholder business-component packages or classes.
+The auth/user slice lives under `dev.realworld.authuser`.
 
 ## Local development
 
@@ -38,4 +39,8 @@ Default HTTP port: `8080`.
 ## Quarkus guides
 
 - [Quarkus REST](https://quarkus.io/guides/rest)
+- [Quarkus REST JSON-B](https://quarkus.io/guides/rest-json)
+- [SmallRye JWT](https://quarkus.io/guides/security-jwt)
+- [Quarkus JNoSQL](https://docs.quarkiverse.io/quarkus-jnosql/dev/index.html)
+- [Hibernate Validator](https://quarkus.io/guides/validation)
 - [SmallRye Health](https://quarkus.io/guides/smallrye-health)
