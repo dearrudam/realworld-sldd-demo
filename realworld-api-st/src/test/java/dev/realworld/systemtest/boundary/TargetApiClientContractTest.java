@@ -7,17 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class TargetApiClientContractTest {
-
     @Test
     void registersWithSharedServiceUriConfigKey() {
         var registration = TargetApiClient.class.getAnnotation(RegisterRestClient.class);
-
         assertNotNull(registration);
         assertEquals("service_uri", registration.configKey());
     }
 
     @Test
-    void declaresNoEndpointSmokeMethods() {
-        assertEquals(0, TargetApiClient.class.getDeclaredMethods().length);
+    void declaresAuthUserEndpointMethods() {
+        assertEquals(4, TargetApiClient.class.getDeclaredMethods().length);
     }
 }
