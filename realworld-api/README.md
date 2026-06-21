@@ -39,3 +39,9 @@ Default HTTP port: `8080`.
 
 - [Quarkus REST](https://quarkus.io/guides/rest)
 - [SmallRye Health](https://quarkus.io/guides/smallrye-health)
+
+## Auth and current user API
+
+The application exposes the RealWorld authentication and current-user slice under `/api/users`, `/api/users/login`, and `/api/user`. The implementation uses JNoSQL MongoDB persistence, SmallRye JWT bearer tokens, PBKDF2 password hashing, Jakarta Validation, and JSON-B request/response envelopes.
+
+Local tests can run without Docker for shell-level verification, but full MongoDB-backed auth scenarios require Docker/Testcontainers or an explicitly configured MongoDB connection string.

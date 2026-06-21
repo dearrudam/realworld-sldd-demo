@@ -41,3 +41,7 @@ quarkus.rest-client.service_uri.url=${realworld-api.base-url}
 
 - [Quarkus REST Client](https://quarkus.io/guides/rest-client)
 - [Quarkus REST](https://quarkus.io/guides/rest)
+
+## Auth/user system-test client
+
+The system-test module includes a `TargetApiClient` contract for RealWorld registration, login, current-user retrieval, and current-user update endpoints. The client keeps the shared `service_uri` REST client config key and supports bearer-token scenarios through `AuthenticationMode.BEARER_TOKEN`.
