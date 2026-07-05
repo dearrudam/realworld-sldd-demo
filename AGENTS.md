@@ -2,7 +2,8 @@
 
 ## Project Overview
 
-Quarkus MicroProfile template using Boundary-Control-Entity (BCE) architectural pattern. The project demonstrates clean separation of concerns with JAX-RS resources, MicroProfile Config, CDI, and Health checks.
+The project intents to be a RealWorld API implementation for the [RealWorld](https://github.com/gothinkster/realworld) project.
+The project demonstrates clean separation of concerns with JAX-RS resources, Jakarta NoSQL/Jakarta Data persistence concepts, MicroProfile Config, CDI, and Health checks by using Boundary-Control-Entity (BCE) architectural pattern.
 
 ## Architecture
 
@@ -11,10 +12,10 @@ Follows the [BCE pattern](https://bce.design).
 ### Package Structure
 
 ```
-airhacks.[app-name].[component-name].[boundary|control|entity]
+dearrudam.[app-name].[component-name].[boundary|control|entity]
 ```
 
-Example: `airhacks.qmp.greetings.boundary.GreetingResource`
+Example: `dearrudam.realworld.greetings.boundary.GreetingResource`
 
 ### Modules
 
@@ -47,7 +48,8 @@ mvn quarkus:dev
 
 # Terminal 2: Run system tests
 cd service-st
-mvn verify
+mvn clean test-compile failsafe:integration-test
+
 ```
 
 ### Package
