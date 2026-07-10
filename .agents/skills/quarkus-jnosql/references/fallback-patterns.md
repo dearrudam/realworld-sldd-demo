@@ -61,9 +61,10 @@ import jakarta.nosql.Id;
 public record Book(
     @Id String id,
     @Column String title,
-    @Column String author
+    @Column Author author
 ) {}
 ```
+
 **IMPORTANT:** prefer Java records over POJOs when possible. Only use POJOs when records are not suitable:
 
 Using POJO(Plain Old Java Object):
@@ -83,11 +84,68 @@ public class Book {
     private String title;
 
     @Column
-    private String author;
+    private Author author;
 
     // Getters and setters omitted for brevity
 }
 ```
+
+## Embedded Fields and Embeddable Classes
+
+Using POJO:
+
+```java
+import jakarta.nosql.Column;
+import jakarta.nosql.Embeddable;
+
+@Embeddable(GROUPING)
+public class Address {
+    @Column
+    private String street;
+    @Column
+    private String city;
+    @Column
+    private String postalCode;
+}
+```
+
+Using Java Record:
+
+```java
+import jakarta.nosql.Column;
+import jakarta.nosql.Embeddable;
+import jakarta.nosql.Embeddable.EmbeddableType.GROUPING;
+
+@Embeddable
+public record Name (
+        @Column String firstName,
+        @Column String lastName){
+}
+```
+
+Applying to an entity:
+
+```java
+import jakarta.nosql.Column;
+import jakarta.nosql.Id;
+import jakarta.nosql.Entity;
+
+@Entity
+public class Person {
+    @Id
+    private Long id;
+    @Column
+    private Name name; 
+    @Column
+    private Address address;  
+}
+```
+
+Embeddable classes can have two types of strategies:
+- Embeddable.EmbeddableType.FLAT: where the embeddable class is treated as a parent entity type.
+- Embeddable.EmbeddableType.GROUPING: where the embeddable class is stored in a structured type.
+
+**IMPORTANT:** prefer Java records over POJOs when possible. Only use POJOs when records are not suitable:
 
 ## Repository pattern
 

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>airhacks</groupId>
     <artifactId>service</artifactId>
@@ -15,7 +13,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.platform.version>3.35.1</quarkus.platform.version>
+        <quarkus.platform.version>3.37.1</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
         <jakarta-nosql.version>1.0.0</jakarta-nosql.version>
@@ -58,8 +56,13 @@
             <version>${jakarta-data.version}</version>
         </dependency>
         <dependency>
+            <groupId>io.quarkiverse.jnosql</groupId>
+            <artifactId>quarkus-jnosql-mongodb</artifactId>
+            <version>3.4.14</version>
+        </dependency>
+        <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-junit5</artifactId>
+            <artifactId>quarkus-junit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -86,6 +89,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${compiler-plugin.version}</version>
                 <configuration>
+                    <proc>${maven.compiler.proc}</proc>
                     <parameters>true</parameters>
                 </configuration>
             </plugin>
@@ -112,8 +116,7 @@
                 </executions>
                 <configuration>
                     <systemPropertyVariables>
-                        <native.image.path>
-                            ${project.build.directory}/${project.build.finalName}-runner</native.image.path>
+                        <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                         <maven.home>${maven.home}</maven.home>
                     </systemPropertyVariables>
@@ -123,41 +126,6 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>jakarta</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <jnosql.version>1.1.15</jnosql.version>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-mongodb-client</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.eclipse.jnosql.databases</groupId>
-                    <artifactId>jnosql-mongodb</artifactId>
-                    <version>${jnosql.version}</version>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>lite</id>
-            <activation>
-                <property>
-                    <name>native</name>
-                </property>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>io.quarkiverse.jnosql</groupId>
-                    <artifactId>quarkus-jnosql-mongodb</artifactId>
-                    <version>3.4.14</version>
-                </dependency>
-            </dependencies>
-        </profile>
         <profile>
             <id>native</id>
             <activation>
